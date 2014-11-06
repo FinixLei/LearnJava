@@ -9,6 +9,7 @@ import big_package.mid_package.*;
 import java.util.Random;
 import java.util.*;
 import java.io.*;
+import java.lang.Thread;
 
 interface OutInterface{}
 
@@ -24,13 +25,18 @@ class OuterClass{
 	}
 }
 
+
 public class HelloJava {
 	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testDataInputStreamDataOutputStream();
+		testSyncMethod();
+		// testSafeRunnable();
+		// testRunnable();
+		// testThreadTest();
+		// testDataInputStreamDataOutputStream();
 		// testBufferedReaderBufferedWriter();
 		// testFileReaderFileWriter();
 		// testFileInputStreamFileOutputStream();
@@ -58,6 +64,33 @@ public class HelloJava {
 		// testDate();
 		// testCompareStr();
 		// simpleTest();	
+	}
+	
+	private static void testSyncMethod(){
+		SyncMethodTest st = new SyncMethodTest(5);
+		st.startThreads();
+	}
+	
+	private static void testSafeRunnable() {
+		SafeRunnableTest srt = new SafeRunnableTest();
+		srt.startThreads();
+	}
+	
+	private static void testRunnable() {
+		RunnableTest rt = new RunnableTest();
+		rt.startThreads();
+	}
+	
+	private static void testThreadTest(){
+		try{
+			ThreadTest[] tarray = {new ThreadTest(), new ThreadTest(), new ThreadTest()};
+			// ThreadTest[] tarray = new ThreadTest [3]; // This line does not work: new does not work for array
+			for(int i=0; i<tarray.length; i++){
+				tarray[i].start();
+			}
+		} catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
 	}
 	
 	private static void testDataInputStreamDataOutputStream(){
