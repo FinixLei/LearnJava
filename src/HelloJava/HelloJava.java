@@ -5,8 +5,7 @@ import java.util.Date;
 import java.text.DecimalFormat;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import big_package.mid_package.Person;
-import big_package.mid_package.MyException;
+import big_package.mid_package.*;
 import java.util.Random;
 import java.util.*;
 
@@ -30,7 +29,10 @@ public class HelloJava {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testCollection();
+		testMap();
+		// testTreeSet();
+		// testLinkedList();
+		// testCollection();
 		// testException(10);
 		// testLocalInnerClass();
 		// testFinalVar(100);
@@ -50,6 +52,91 @@ public class HelloJava {
 		// testDate();
 		// testCompareStr();
 		// simpleTest();	
+	}
+	
+	private static void testMap(){
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("0001", "Finix");
+		map.put("0002", "Bob");
+		map.put("0003", "kdfjdk");
+		
+		Set<String> set = map.keySet();
+		Iterator<String> it = set.iterator();
+		System.out.println("All the elements in map: ");
+		while(it.hasNext()){
+			String k = it.next();
+			System.out.println(k + ": " + map.get(k));
+		}
+		
+		Collection<String> coll = map.values();
+		it = coll.iterator();
+		System.out.println("All the elements in values: ");
+		while(it.hasNext()){
+			System.out.println(it.next());
+		}
+		
+		// Create TreeMap from HashMap
+		TreeMap<String, String> treemap = new TreeMap<String, String>();
+		treemap.putAll(map);
+		System.out.println("All the elements in treemap: ");
+		it = treemap.keySet().iterator();
+		while(it.hasNext()){
+			String k = it.next();
+			System.out.println(k + ": " + treemap.get(k));
+		}
+	}
+	
+	private static void testTreeSet(){
+		UpdateStu stu1 = new UpdateStu("Alice", 19876);
+		UpdateStu stu2 = new UpdateStu("Bob", 10091);
+		UpdateStu stu3 = new UpdateStu("Cooker", 43002);
+		UpdateStu stu4 = new UpdateStu("Doglas", 59992);
+		UpdateStu stu5 = new UpdateStu("Ema", 9999);
+		
+		TreeSet<UpdateStu> tree = new TreeSet<UpdateStu>();
+		tree.add(stu1);
+		tree.add(stu2);
+		tree.add(stu3);
+		tree.add(stu4);
+		tree.add(stu5);
+		
+		Iterator<UpdateStu> it = tree.iterator();
+		System.out.println("All the elements:");
+		while(it.hasNext()){
+			UpdateStu stu = (UpdateStu) it.next();
+			System.out.println(stu.getId() + " " + stu.getName());
+		}
+		
+		System.out.println("Get the first part of students:");
+		it = tree.headSet(stu2).iterator();
+		while(it.hasNext()){
+			UpdateStu stu = (UpdateStu) it.next();
+			System.out.println(stu.getId() + " " + stu.getName());
+		}
+		
+		System.out.println("Get the middle part of students:");
+		it = tree.subSet(stu2,  stu4).iterator();
+		while(it.hasNext()){
+			UpdateStu stu = (UpdateStu) it.next();
+			System.out.println(stu.getId() + " " + stu.getName());
+		}
+	}
+	
+	private static void testLinkedList() {
+		List<String> list = new LinkedList<String>();
+		list.add("abc");
+		list.add("def");
+		list.add("hello");
+		
+		for (String s : list){
+			System.out.print(s + ", ");
+		}
+		System.out.println("");
+		int index = (int)(Math.random() * list.size());
+		list.remove(index);
+		for (String s : list){
+			System.out.print(s + ", ");
+		}
 	}
 	
 	private static void testCollection(){
