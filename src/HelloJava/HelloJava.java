@@ -122,7 +122,7 @@ public class HelloJava {
 			System.out.println("In input part: " + ex.getMessage());
 		}
 		
-		// file.delete();
+		file.delete();
 	}
 	
 	private static void testBufferedReaderBufferedWriter(){
