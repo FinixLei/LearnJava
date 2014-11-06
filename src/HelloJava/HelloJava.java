@@ -8,6 +8,7 @@ import java.math.BigInteger;
 import big_package.mid_package.*;
 import java.util.Random;
 import java.util.*;
+import java.io.*;
 
 interface OutInterface{}
 
@@ -29,7 +30,11 @@ public class HelloJava {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testMap();
+		// testBufferedReaderBufferedWriter();
+		// testFileReaderFileWriter();
+		// testFileInputStreamFileOutputStream();
+		// testFile();
+		// testMap();
 		// testTreeSet();
 		// testLinkedList();
 		// testCollection();
@@ -52,6 +57,122 @@ public class HelloJava {
 		// testDate();
 		// testCompareStr();
 		// simpleTest();	
+	}
+	
+	private static void testBufferedReaderBufferedWriter(){
+		String[] content = {
+				"你好哇！", 
+				"你学习过Java吗？",
+				"我正在学习Java！"
+		};
+		
+		File file = new File("testBuffered.txt");
+		try{
+			FileWriter fw = new FileWriter(file);
+			BufferedWriter bufw = new BufferedWriter(fw);
+			for (String line : content) {
+				bufw.write(line);
+				bufw.newLine();
+			}
+			bufw.flush();
+			bufw.close();
+			fw.close();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println(ex.getMessage());
+		}
+		
+		try{
+			FileReader fr = new FileReader(file);
+			BufferedReader bufr = new BufferedReader(fr);
+			int i = 0;
+			String s = null;
+			while((s=bufr.readLine()) != null){
+				i++;
+				System.out.println("第" + i + "行： " + s);
+			}
+			bufr.close();
+			fr.close();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println(ex.getMessage());
+		}
+		
+		file.delete();
+	}
+	
+	private static void testFileReaderFileWriter(){
+		File file = new File("./testFileReaderFileWriter.txt");
+		try{
+			FileWriter out = new FileWriter(file);
+			String s = "你好，我叫做雷！";
+			out.write(s);
+			out.close();
+		} catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+		try{
+			FileReader in = new FileReader(file);
+			char array[] = new char[10000];
+			int len = in.read(array);
+			in.close();
+			System.out.println("File content is:");
+			System.out.println(new String(array, 0, len));
+		} catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+		file.delete();
+	}
+	
+	private static void testFileInputStreamFileOutputStream(){
+		File file = new File("./testFileStream.txt");
+		try {
+			FileOutputStream out = new FileOutputStream(file);
+			// String s1 = "Hello, I'm learning Java!";
+			String s2 = "你好，我正在学习Java！";
+			byte array[] = s2.getBytes();
+			out.write(array);
+			out.close();
+		} catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+		try {
+			FileInputStream in = new FileInputStream(file);
+			byte array[] = new byte[10000];
+			int len = in.read(array);
+			System.out.println("The content of file " + file.getName() + " is: ");
+			System.out.println(new String(array, 0, len));
+			in.close();
+						
+		} catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+		file.delete();
+	}
+	
+	private static void testFile(){
+		File file = new File("./myfile.txt");
+		if(file.exists()) {
+			file.delete();
+			System.out.println("deleted file " + file.getName());
+		} else {
+			try {
+				file.createNewFile();
+				System.out.println("Created file " + file.getName());
+				long len = file.length();
+				boolean hidden = file.isHidden();
+				System.out.println("File Name: " + file.getName());
+				System.out.println("File Length: " + len);
+				System.out.println("File is hidden? " + hidden);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			} 
+		}
 	}
 	
 	private static void testMap(){
