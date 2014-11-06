@@ -30,6 +30,7 @@ public class HelloJava {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		testDataInputStreamDataOutputStream();
 		// testBufferedReaderBufferedWriter();
 		// testFileReaderFileWriter();
 		// testFileInputStreamFileOutputStream();
@@ -57,6 +58,38 @@ public class HelloJava {
 		// testDate();
 		// testCompareStr();
 		// simpleTest();	
+	}
+	
+	private static void testDataInputStreamDataOutputStream(){
+		File file = new File("./testDataStream.txt");
+		try {
+			FileOutputStream fs = new FileOutputStream(file);
+			DataOutputStream ds = new DataOutputStream(fs);
+			
+			ds.writeUTF("Using writeUTF() to write data");
+			ds.writeChars("Using writeChars() to write data");
+			ds.writeBytes("Using writeBytes() to write data");
+			ds.close();
+			fs.close();
+		} catch(Exception ex) {
+			System.out.println("In output part: " + ex.getMessage());
+		}
+		
+		try{
+			FileInputStream fis = new FileInputStream(file);
+			DataInputStream dis1 = new DataInputStream(fis);
+			System.out.println("The file content is: ");
+			System.out.print(dis1.readUTF());
+			dis1.close();
+			fis.close();
+			// Display is: 
+			// The file content is: 
+			// Using writeUTF() to write data
+		} catch(Exception ex){
+			System.out.println("In input part: " + ex.getMessage());
+		}
+		
+		// file.delete();
 	}
 	
 	private static void testBufferedReaderBufferedWriter(){
