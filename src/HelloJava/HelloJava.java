@@ -7,6 +7,8 @@ import java.util.LinkedList;
 import java.text.DecimalFormat;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+
+import MyReflect.TestReflect;
 import big_package.mid_package.*;
 import java.util.*;
 import java.io.*;
@@ -32,7 +34,8 @@ public class HelloJava {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testGeneralization();
+		testReflect();
+		// testGeneralization();
 		// testEnum();
 		// testSyncMethod();
 		// testSafeRunnable();
@@ -66,6 +69,10 @@ public class HelloJava {
 		// testDate();
 		// testCompareStr();
 		// simpleTest();	
+	}
+	
+	private static void testReflect() {
+		TestReflect.testConstructor();
 	}
 	
 	private static void testGeneralization(){
