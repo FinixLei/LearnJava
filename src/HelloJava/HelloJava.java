@@ -1,15 +1,15 @@
 package HelloJava;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedList;
 import java.text.DecimalFormat;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import big_package.mid_package.*;
-import java.util.Random;
 import java.util.*;
 import java.io.*;
-import java.lang.Thread;
 
 interface OutInterface{}
 
@@ -32,7 +32,9 @@ public class HelloJava {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testSyncMethod();
+		testGeneralization();
+		// testEnum();
+		// testSyncMethod();
 		// testSafeRunnable();
 		// testRunnable();
 		// testThreadTest();
@@ -64,6 +66,22 @@ public class HelloJava {
 		// testDate();
 		// testCompareStr();
 		// simpleTest();	
+	}
+	
+	private static void testGeneralization(){
+		GeneralClass<Integer> g1 = new GeneralClass<Integer>();
+		g1.setData(100);
+		g1.printData();
+
+		GeneralClass<Float> g2 = new GeneralClass<Float>();
+		g2.setData(123.456f);
+		g2.printData();
+	}
+	
+	private static void testEnum(){
+		MyEnum me = new MyEnum();
+		me.listAllColors();
+		me.test_1();
 	}
 	
 	private static void testSyncMethod(){
