@@ -34,13 +34,13 @@ public class HelloJava {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testReflect();
+		// testReflect();
 		// testGeneralization();
 		// testEnum();
 		// testSyncMethod();
 		// testSafeRunnable();
 		// testRunnable();
-		// testThreadTest();
+		testThreadTest();
 		// testDataInputStreamDataOutputStream();
 		// testBufferedReaderBufferedWriter();
 		// testFileReaderFileWriter();
@@ -108,8 +108,11 @@ public class HelloJava {
 	
 	private static void testThreadTest(){
 		try{
-			ThreadTest[] tarray = {new ThreadTest(), new ThreadTest(), new ThreadTest()};
-			// ThreadTest[] tarray = new ThreadTest[3]; // This line does not work: new does not work for array
+			ThreadTest[] tarray = new ThreadTest[3]; 
+			for (int i=0; i<tarray.length; i++) {
+				tarray[i] = new ThreadTest();
+			}
+			
 			for(int i=0; i<tarray.length; i++){
 				tarray[i].start();
 			}
