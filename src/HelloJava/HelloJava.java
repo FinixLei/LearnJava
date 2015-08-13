@@ -68,7 +68,7 @@ public class HelloJava {
 		// testRE();
 		// testDate();
 		// testCompareStr();
-		// simpleTest();	
+		// simpleTest();
 	}
 	
 	private static void testReflect() {
@@ -109,7 +109,7 @@ public class HelloJava {
 	private static void testThreadTest(){
 		try{
 			ThreadTest[] tarray = {new ThreadTest(), new ThreadTest(), new ThreadTest()};
-			// ThreadTest[] tarray = new ThreadTest [3]; // This line does not work: new does not work for array
+			// ThreadTest[] tarray = new ThreadTest[3]; // This line does not work: new does not work for array
 			for(int i=0; i<tarray.length; i++){
 				tarray[i].start();
 			}
@@ -196,7 +196,7 @@ public class HelloJava {
 		File file = new File("./testFileReaderFileWriter.txt");
 		try{
 			FileWriter out = new FileWriter(file);
-			String s = "你好，我叫做雷！";
+			String s = "你好，我叫雷！";
 			out.write(s);
 			out.close();
 		} catch(Exception ex) {
@@ -262,7 +262,9 @@ public class HelloJava {
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println(e.getMessage());
-			} 
+			} finally {
+				file.delete();
+			}
 		}
 	}
 	
@@ -436,7 +438,7 @@ public class HelloJava {
 		//	In GenOne: do something!
 		//	In GenTwo - Constructor
 		//	---------------
-		//	In GenTwo: Do Somthing!
+		//	In GenTwo: Do Something!
 		
 		System.out.println(g2_2); 
 		g2_2.setData(10);
@@ -533,6 +535,21 @@ public class HelloJava {
 		for(int item : a){
 			System.out.print(item + ", ");
 		}
+		
+		System.out.println("");
+		Integer[] b = new Integer[a.length];
+		int count = 0;
+		for (int i : a) {
+			b[count++] = Integer.valueOf(i);
+		}
+		for (Integer i : b) {
+			System.out.print(i + ", ");
+		}
+		System.out.println("");
+		Arrays.sort(b, Collections.reverseOrder());
+		for (Integer i : b) {
+			System.out.print(i + ", ");
+		}
 	}
 	
 	private static void testArray2(){
@@ -546,6 +563,7 @@ public class HelloJava {
 	}
 	
 	private static void testElasedTime(){
+		System.out.println("Start to test elapsed time for string and StringBuilder...");
 		String str = "";
 		long start = System.currentTimeMillis();
 		for(int i=0; i<100000; i++){
@@ -592,16 +610,16 @@ public class HelloJava {
 	
 	private static void testDate(){
 		Date today = new Date();
-		System.out.println("today is " + today);
+		System.out.println("today is " + today);  // today is Wed Aug 12 14:00:00 CST 2015
 		
 		String f1 = String.format("%tF", today);
-		System.out.println("Format-1 is " + f1);
+		System.out.println("Format-1 is " + f1);  // Format-1 is 2015-08-12
 		String f2 = String.format("%tF %tr", today, today);
-		System.out.println("Format-2 is " + f2);
+		System.out.println("Format-2 is " + f2);  // Format-2 is 2015-08-12 02:00:00 PM
 		String f3 = String.format("%tF %tT", today, today);
-		System.out.println("Format-3 is " + f3);
+		System.out.println("Format-3 is " + f3);  // Format-2 is 2015-08-12 14:00:00
 	}
-;	
+	
 	private static void testCompareStr(){
 		String s1 = "ab";
 		String s2 = "dega";

@@ -19,5 +19,4 @@ public class GeneralClass<T> {
 		System.out.println(data.toString());
 	}
 	
-	
 }

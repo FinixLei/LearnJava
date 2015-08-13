@@ -8,11 +8,14 @@ class SyncMethodTest {
 	// private void addData(String id){ // If no synchronized, t1 and t2 will all run
 	private synchronized void addData(String id){ // t1 will run first, then t2, as it is synchronized. 
 		try{
+			System.out.println("In " + id + ":");
+			Thread.sleep(1000);
 			while(data < 50) {
 				System.out.print(data + " " + id + ", ");
 				++data;
 				Thread.sleep(10);
 			}
+			System.out.println("");
 		} catch(Exception ex) {
 			System.out.println(ex.getMessage());
 		}
