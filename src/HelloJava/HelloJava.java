@@ -9,9 +9,11 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import MyReflect.TestReflect;
+import Test01.Employee;
 import big_package.mid_package.*;
 import java.util.*;
 import java.io.*;
+import java.lang.Class;
 
 interface OutInterface{}
 
@@ -34,13 +36,14 @@ public class HelloJava {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		testReflect01();
 		// testReflect();
 		// testGeneralization();
 		// testEnum();
 		// testSyncMethod();
 		// testSafeRunnable();
 		// testRunnable();
-		testThreadTest();
+		// testThreadTest();
 		// testDataInputStreamDataOutputStream();
 		// testBufferedReaderBufferedWriter();
 		// testFileReaderFileWriter();
@@ -69,6 +72,21 @@ public class HelloJava {
 		// testDate();
 		// testCompareStr();
 		// simpleTest();
+	}
+	
+	private static void testReflect01(){
+		Employee e1 = new Employee(101, "Fox");
+		Class c1 = e1.getClass();
+		System.out.println(c1.getName() + " " + e1.getName());
+		
+		try {
+			String name1 = "Test01.Employee";
+			Class c2 = Class.forName(name1);
+			System.out.println(c2.getName());
+		} 
+		catch(ClassNotFoundException cnf) {
+			System.out.println("Class Not Found" + cnf.getMessage());
+		}
 	}
 	
 	private static void testReflect() {
