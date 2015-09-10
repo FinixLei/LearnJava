@@ -8,6 +8,9 @@ import java.text.DecimalFormat;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import java.util.Map;
+import java.util.HashMap;
+
 import MyReflect.TestReflect;
 import Test01.Employee;
 import big_package.mid_package.*;
@@ -36,7 +39,8 @@ public class HelloJava {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testReflect01();
+		testConvertToJson();
+		// testReflect01();
 		// testReflect();
 		// testGeneralization();
 		// testEnum();
@@ -72,6 +76,14 @@ public class HelloJava {
 		// testDate();
 		// testCompareStr();
 		// simpleTest();
+	}
+	
+	private static void testConvertToJson() {
+		Map<String, Integer> mp = new HashMap<String, Integer>();
+		mp.put("First", 1000);
+		mp.put("Second", 2000);
+		String mpstr = mp.toString();  
+		System.out.println(mpstr);  // {Second=2000, First=1000}
 	}
 	
 	private static void testReflect01(){
