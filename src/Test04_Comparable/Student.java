@@ -1,4 +1,4 @@
-package Test04_Compatable;
+package Test04_Comparable;
 
 enum Grade {GradeOne, GradeTwo, GradeThree, GradeFour, GradeFive, GradeSix,
             GradeSeven, GradeEight, GradeNine, GradeTen, GradeEleven, GradeTwelve

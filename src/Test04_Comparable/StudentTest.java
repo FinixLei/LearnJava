@@ -1,4 +1,4 @@
-package Test04_Compatable;
+package Test04_Comparable;
 
 import java.util.List;
 import java.util.ArrayList;
