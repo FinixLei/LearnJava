@@ -29,7 +29,7 @@ public class MySplitter {
             System.out.println(i + " : " + strArray1[i]);
         }
         
-        String[] strArray2 = null;
+        String[] strArray2 = {};
         if (bigStr.contains(delimiter)) {
             strArray2 = bigStr.split(Pattern.quote(delimiter));
         }
