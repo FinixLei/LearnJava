@@ -2,6 +2,7 @@ package Test07_synchronizedsingleton;
 
 public class Singleton {
 	public static Singleton getInstance() {
+	// Note, we don't want a synchronized method getInstance() because of efficiency
 		if (s == null) {
 			synchronized(Singleton.class){
 				if (s == null){ // This check is important for avoiding another thread to new again
